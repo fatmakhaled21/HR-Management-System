@@ -1,0 +1,47 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-logo">
+        <i class="fa-solid fa-briefcase"></i>
+      </div>
+      <h2>Welcome Back</h2>
+      <p>Log in to manage your workspace and team</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-icon-wrapper">
+          <i class="fa-regular fa-envelope input-icon"></i>
+          <input class="form-control" type="email" id="email" formControlName="email" placeholder="name@company.com">
+        </div>
+        <div class="error-msg"
+          *ngIf="(loginForm.get('email')?.touched || loginForm.get('email')?.value.length > 0) && loginForm.get('email')?.errors">
+          <span *ngIf="loginForm.get('email')?.getError('required')"><i class="fa-solid fa-circle-exclamation"></i> Email is required.</span>
+          <span *ngIf="loginForm.get('email')?.getError('email')"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-icon-wrapper">
+          <i class="fa-solid fa-lock input-icon"></i>
+          <input class="form-control" type="password" id="password" formControlName="password" placeholder="••••••••">
+        </div>
+        <div class="error-msg"
+          *ngIf="(loginForm.get('password')?.touched || loginForm.get('password')?.value.length > 0) && loginForm.get('password')?.errors">
+          <span *ngIf="loginForm.get('password')?.getError('required')"><i class="fa-solid fa-circle-exclamation"></i> Password is required.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-main w-100 mt-2" [disabled]="isLoading">
+        <i *ngIf="isLoading" class="fas fa-spin fa-spinner me-2"></i>
+        <span>Login</span>
+      </button>
+
+      <div class="error-msg alert-danger-custom mt-3" *ngIf="errorMessages">
+        <i class="fa-solid fa-triangle-exclamation"></i> {{ errorMessages }}
+      </div>
+    </form>
+  </div>
+</div>

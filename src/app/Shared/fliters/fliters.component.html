@@ -1,0 +1,68 @@
+<div class="filters-row">
+  <div class="filter-item" *ngIf="showdepartment">
+    <label for="departmentFilter" class="filter-label">
+      <i class="fa-solid fa-sitemap label-icon"></i>
+      <span>Department</span>
+    </label>
+    <select id="departmentFilter" class="form-select filter-select" [ngModel]="selectedDepartment"
+      (ngModelChange)="selectedDepartmentChange.emit($event)">
+      <option value="">All Departments</option>
+      <option value="Human Resources">Human Resources</option>
+      <option value="Information Technology">Information Technology</option>
+      <option value="Finance">Finance</option>
+      <option value="Marketing">Marketing</option>
+    </select>
+  </div>
+
+  <div class="filter-item" *ngIf="showStatus">
+    <label for="statusFilter" class="filter-label">
+      <i class="fa-solid fa-signal label-icon"></i>
+      <span>Status</span>
+    </label>
+    <select id="statusFilter" class="form-select filter-select" [ngModel]="selectedStatus" (ngModelChange)="selectedStatusChange.emit($event)">
+      <option value="">All Status</option>
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+      <option value="On Leave">On Leave</option>
+    </select>
+  </div>
+
+  <div class="filter-item" *ngIf="showStatusattendance">
+    <label for="statusAttendanceFilter" class="filter-label">
+      <i class="fa-solid fa-signal label-icon"></i>
+      <span>Attendance Status</span>
+    </label>
+    <select id="statusAttendanceFilter" class="form-select filter-select" [ngModel]="selectedStatus" (ngModelChange)="selectedStatusChange.emit($event)">
+      <option value="">All Status</option>
+      <option value="Present">Present</option>
+      <option value="Late">Late</option>
+      <option value="Absent">Absent</option>
+    </select>
+  </div>
+
+  <div class="filter-item" *ngIf="showLeaveType">
+    <label for="leaveTypeFilter" class="filter-label">
+      <i class="fa-regular fa-envelope label-icon"></i>
+      <span>Leave Type</span>
+    </label>
+    <select id="leaveTypeFilter" class="form-select filter-select" [ngModel]="selectedLeaveType" (ngModelChange)="selectedLeaveTypeChange.emit($event)">
+      <option value="">All Leave Types</option>
+      <option value="Annual Leave">Annual Leave</option>
+      <option value="Sick Leave">Sick Leave</option>
+      <option value="Casual Leave">Casual Leave</option>
+    </select>
+  </div>
+
+  <div class="filter-item" *ngIf="showStatusatLeave">
+    <label for="leaveStatusFilter" class="filter-label">
+      <i class="fa-solid fa-signal label-icon"></i>
+      <span>Leave Status</span>
+    </label>
+    <select id="leaveStatusFilter" class="form-select filter-select" [ngModel]="selectedStatus" (ngModelChange)="selectedStatusChange.emit($event)">
+      <option value="">All Status</option>
+      <option value="Approved">Approved</option>
+      <option value="Pending">Pending</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+  </div>
+</div>

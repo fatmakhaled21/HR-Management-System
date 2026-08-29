@@ -1,0 +1,67 @@
+<div class="popup-overlay animate-fade-in" *ngIf="viewpopu">
+  <div class="popup-content details-modal shadow-lg animate-scale-up">
+    <!-- Header/Card Title -->
+    <div class="d-flex justify-content-between align-items-start mb-4">
+      <div class="d-flex align-items-center gap-3">
+        <div class="profile-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div>
+          <h3 class="profile-name m-0">{{ EmplyeesDetails.name | uppercase }}</h3>
+          <span class="profile-email text-secondary">{{ EmplyeesDetails.email }}</span>
+        </div>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeDetails()"></button>
+    </div>
+
+    <!-- Details Grid -->
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="detail-icon"><i class="fa-solid fa-sitemap"></i></div>
+        <div class="detail-info">
+          <span class="detail-label">Department</span>
+          <span class="detail-value">{{ EmplyeesDetails.departments?.name || 'N/A' }}</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+        <div class="detail-info">
+          <span class="detail-label">Salary</span>
+          <span class="detail-value">${{ EmplyeesDetails.salary | number }} / mo</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon"><i class="fa-solid fa-phone"></i></div>
+        <div class="detail-info">
+          <span class="detail-label">Phone Number</span>
+          <span class="detail-value">{{ EmplyeesDetails.phone || 'N/A' }}</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon"><i class="fa-regular fa-calendar-days"></i></div>
+        <div class="detail-info">
+          <span class="detail-label">Hire Date</span>
+          <span class="detail-value">{{ EmplyeesDetails.hire_date || 'N/A' }}</span>
+        </div>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <div class="detail-info">
+          <span class="detail-label">Contract Status</span>
+          <span class="detail-value">
+            <span [class]="'badge ' + (EmplyeesDetails.status === 'Active' ? 'badge-active' : EmplyeesDetails.status === 'Inactive' ? 'badge-inactive' : 'badge-on-leave')">{{ EmplyeesDetails.status }}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Close button -->
+    <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+      <button class="btn btn-secondary px-4" (click)="closeDetails()">Close</button>
+    </div>
+  </div>
+</div>

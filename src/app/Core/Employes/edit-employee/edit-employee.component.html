@@ -1,0 +1,62 @@
+<div class="popup-content shadow-lg animate-scale-up">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="m-0">Edit Employee Details</h3>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeEditEmployee()"></button>
+  </div>
+
+  <form [formGroup]="EmployeeForm" (ngSubmit)="updateEmployee()">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" class="form-control" formControlName="name" id="name">
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" formControlName="email" id="email">
+      </div>
+      <div class="col-md-6 form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control" formControlName="phone" id="phone">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="department">Department</label>
+      <select class="form-select" formControlName="department_id" id="department">
+        <option *ngFor="let dept of departments" [value]="dept.id">
+          {{ dept.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label for="salary">Monthly Salary ($)</label>
+        <input type="number" class="form-control" formControlName="salary" id="salary">
+      </div>
+      <div class="col-md-6 form-group">
+        <label for="date">Hire Date</label>
+        <input type="date" class="form-control" formControlName="hire_date" id="date">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Employment Status</label>
+      <select class="form-select" formControlName="status" id="status">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="On Leave">On Leave</option>
+      </select>
+    </div>
+
+    <div class="d-flex justify-content-end gap-3 mt-4 pt-2 border-top">
+      <button type="button" class="btn btn-secondary" (click)="closeEditEmployee()">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-primary">
+        Save Changes
+      </button>
+    </div>
+  </form>
+</div>

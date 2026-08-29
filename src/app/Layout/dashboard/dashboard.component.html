@@ -1,0 +1,90 @@
+<div class="dashboard-wrapper animate-fade-in">
+  <div class="page-header mb-4">
+    <div>
+      <h1>Dashboard</h1>
+      <p class="text-secondary m-0">Overview of the company, employees, and organization status.</p>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- Total Employees -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card h-100 card-hoverable dashboard-stat-card border-indigo">
+        <div class="stat-card-inner">
+          <div class="stat-info">
+            <h5 class="card-title">Total Employees</h5>
+            <h2 class="card-value">{{ totalEmployees }}</h2>
+          </div>
+          <div class="stat-icon-wrapper bg-indigo-light text-indigo">
+            <i class="fa-solid fa-users"></i>
+          </div>
+        </div>
+        <div class="stat-footer mt-3">
+          <span class="trend-indicator text-success">
+            <i class="fa-solid fa-arrow-trend-up me-1"></i> Staff database
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Employees -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card h-100 card-hoverable dashboard-stat-card border-emerald">
+        <div class="stat-card-inner">
+          <div class="stat-info">
+            <h5 class="card-title">Active Employees</h5>
+            <h2 class="card-value">{{ activeEmployees }}</h2>
+          </div>
+          <div class="stat-icon-wrapper bg-emerald-light text-emerald">
+            <i class="fa-solid fa-user-check"></i>
+          </div>
+        </div>
+        <div class="stat-footer mt-3">
+          <span class="trend-indicator text-success">
+            <i class="fa-solid fa-circle-play me-1"></i> Currently active
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Departments Count -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card h-100 card-hoverable dashboard-stat-card border-cyan">
+        <div class="stat-card-inner">
+          <div class="stat-info">
+            <h5 class="card-title">Departments Count</h5>
+            <h2 class="card-value">{{ departmentsCount }}</h2>
+          </div>
+          <div class="stat-icon-wrapper bg-cyan-light text-cyan">
+            <i class="fa-solid fa-sitemap"></i>
+          </div>
+        </div>
+        <div class="stat-footer mt-3">
+          <span class="trend-indicator text-secondary">
+            <i class="fa-solid fa-folder me-1"></i> Business units
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Employees on Leave -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card h-100 card-hoverable dashboard-stat-card border-amber">
+        <div class="stat-card-inner">
+          <div class="stat-info">
+            <h5 class="card-title">Employees on Leave</h5>
+            <h2 class="card-value">{{ employeesOnLeave }}</h2>
+          </div>
+          <div class="stat-icon-wrapper bg-amber-light text-amber">
+            <i class="fa-solid fa-person-arrow-down-to-line"></i>
+          </div>
+        </div>
+        <div class="stat-footer mt-3">
+          <span class="trend-indicator text-warning">
+            <i class="fa-solid fa-plane-departure me-1"></i> Out of office
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

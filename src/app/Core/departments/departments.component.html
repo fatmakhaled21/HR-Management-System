@@ -1,0 +1,84 @@
+<div class="departments-wrapper animate-fade-in">
+  <div class="page-header mb-4">
+    <div>
+      <h1>Departments</h1>
+      <p class="text-secondary m-0">View organization structure, managers, and headcounts.</p>
+    </div>
+    <div>
+      <button type="button" class="btn-main" (click)="openAdddepartments()">
+        <i class="fa-solid fa-plus"></i> Add Department
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay Modal for Adding Department -->
+  <div class="popup-overlay animate-fade-in" *ngIf="openpopu">
+    <div class="popup-content shadow-lg animate-scale-up">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="m-0">Add New Department</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="openAdddepartments()"></button>
+      </div>
+
+      <form [formGroup]="departmentsForm" (ngSubmit)="openAdd()">
+        <div class="form-group">
+          <label for="deptName">Department Name</label>
+          <input type="text" class="form-control" formControlName="name" id="deptName" placeholder="e.g. Engineering">
+        </div>
+
+        <div class="form-group">
+          <label for="deptManager">Manager Name</label>
+          <input type="text" class="form-control" formControlName="manager" id="deptManager" placeholder="e.g. Jane Smith">
+        </div>
+
+        <div class="form-group">
+          <label for="deptEmployees">Number of Employees</label>
+          <input type="number" class="form-control" formControlName="number_of_employees" id="deptEmployees" placeholder="e.g. 10">
+        </div>
+
+        <div class="d-flex justify-content-end gap-3 mt-4 pt-2 border-top">
+          <button type="button" class="btn btn-secondary" (click)="openAdddepartments()">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Add Department
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card p-4">
+    <div class="row align-items-center mb-3">
+      <div class="col-md-6 col-lg-5">
+        <app-search [(searchTerms)]="searchTerms"></app-search>
+      </div>
+      <div class="col-md-6 col-lg-7">
+        <app-fliters [(selectedDepartment)]="selectedDepartment" [showStatus]="false" [showStatusattendance]="false"
+          [showStatusatLeave]="false" [showLeaveType]="false"></app-fliters>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Manager</th>
+            <th scope="col" class="text-end">Number of Employees</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let items of departments | search : searchTerms : 'name' | filter: selectedDepartment : 'name'">
+            <td><span class="text-muted font-monospace">#{{ items.id }}</span></td>
+            <td><strong>{{ items.name | uppercase }}</strong></td>
+            <td>
+              <span class="manager-name"><i class="fa-solid fa-user-tie me-2 text-muted"></i>{{ items.manager }}</span>
+            </td>
+            <td class="text-end"><span class="badge badge-active">{{ getEmployeesCount(items.id) }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

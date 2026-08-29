@@ -1,0 +1,49 @@
+<div class="attendance-wrapper animate-fade-in">
+  <div class="page-header mb-4">
+    <div>
+      <h1>Attendance Logs</h1>
+      <p class="text-secondary m-0">Track daily check-in/out times, working status, and history.</p>
+    </div>
+  </div>
+
+  <div class="card p-4">
+    <div class="row align-items-center mb-3">
+      <div class="col-md-6 col-lg-5">
+        <app-search [(searchTerms)]="searchTerms"></app-search>
+      </div>
+      <div class="col-md-6 col-lg-7">
+        <app-fliters [(selectedStatus)]="selectedStatus" [showStatusattendance]="true" [showStatus]="false"
+          [showdepartment]="false" [showStatusatLeave]="false" [showLeaveType]="false"></app-fliters>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Check In</th>
+            <th scope="col">Check Out</th>
+            <th scope="col" class="text-end">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let items of Attendance | search : searchTerms : 'employees.name' | filter: selectedStatus : 'status'">
+            <td><span class="text-muted font-monospace">#{{ items.id }}</span></td>
+            <td><strong>{{ items.employees?.name | uppercase }}</strong></td>
+            <td>
+              <span class="time-stamp"><i class="fa-regular fa-clock me-2 text-muted"></i>{{ items.check_in || 'N/A' }}</span>
+            </td>
+            <td>
+              <span class="time-stamp"><i class="fa-regular fa-clock me-2 text-muted"></i>{{ items.check_out || 'N/A' }}</span>
+            </td>
+            <td class="text-end">
+              <span [class]="'badge ' + (items.status === 'Present' ? 'badge-present' : items.status === 'Late' ? 'badge-late' : 'badge-absent')">{{ items.status }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

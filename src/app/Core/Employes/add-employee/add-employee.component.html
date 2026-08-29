@@ -1,0 +1,73 @@
+<div>
+  <button type="button" class="btn-main" (click)="openAddEmployees()">
+    <i class="fa-solid fa-plus"></i> Add Employee
+  </button>
+
+  <!-- Overlay Modal -->
+  <div class="popup-overlay animate-fade-in" *ngIf="openpopu">
+    <div class="popup-content shadow-lg animate-scale-up">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="m-0">Add New Employee</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeAddEmployees()"></button>
+      </div>
+
+      <form [formGroup]="EmployeeForm" (ngSubmit)="handleForm()">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input class="form-control" type="text" id="name" formControlName="name" placeholder="e.g. John Doe">
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="email">Email Address</label>
+            <input #inputEmail class="form-control" type="email" id="email" formControlName="email" placeholder="john.doe@company.com">
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="phone">Phone Number</label>
+            <input class="form-control" type="text" id="phone" formControlName="phone" placeholder="e.g. +123456789">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="department">Department</label>
+          <select class="form-select" formControlName="department_id" id="department">
+            <option value="">Select Department</option>
+            <option *ngFor="let item of departments" [value]="item.id">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="salary">Monthly Salary ($)</label>
+            <input class="form-control" type="number" id="salary" formControlName="salary" placeholder="e.g. 5000">
+          </div>
+          <div class="col-md-6 form-group">
+            <label for="date">Hire Date</label>
+            <input class="form-control" type="date" id="date" formControlName="hire_date">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Employment Status</label>
+          <select class="form-select" formControlName="status" id="status">
+            <option value="">Select Status</option>
+            <option *ngFor="let status of statusList" [value]="status">
+              {{ status }}
+            </option>
+          </select>
+        </div>
+
+        <div class="d-flex justify-content-end gap-3 mt-4 pt-2 border-top">
+          <button type="button" class="btn btn-secondary" (click)="closeAddEmployees()">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            Save Employee
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

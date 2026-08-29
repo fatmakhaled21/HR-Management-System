@@ -1,0 +1,359 @@
+<div class="settings-wrapper animate-fade-in">
+
+  <div class="page-header mb-4">
+    <div>
+      <h1>Settings</h1>
+      <p class="text-secondary m-0">
+        Customize your portal appearance and review workplace policies.
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ Top Settings ═══════════════════════ -->
+  <div class="settings-top-grid">
+
+    <!-- Appearance Section -->
+    <div class="settings-section appearance-section">
+
+      <div class="section-header">
+        <div class="section-icon appearance-icon">
+          <i class="fa-solid fa-palette"></i>
+        </div>
+
+        <div>
+          <h2 class="section-title">Appearance</h2>
+          <p class="section-subtitle">
+            Choose your preferred visual theme for the portal.
+          </p>
+        </div>
+      </div>
+
+      <div class="theme-cards-row">
+
+        <!-- Light Theme -->
+        <div
+          class="theme-card"
+          [class.theme-card-active]="!isDarkMode"
+          (click)="isDarkMode ? toggleTheme() : null">
+
+          <div class="theme-preview light-preview">
+
+            <div class="preview-sidebar"></div>
+
+            <div class="preview-body">
+              <div class="preview-header-bar"></div>
+
+              <div class="preview-content-lines">
+                <div class="preview-line"></div>
+                <div class="preview-line short"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="theme-card-footer">
+
+            <div class="theme-card-info">
+              <i class="fa-solid fa-sun"></i>
+              <span>Light Mode</span>
+            </div>
+
+            <span
+              class="theme-badge active-badge"
+              [style.display]="isDarkMode ? 'none' : 'inline-flex'">
+              Active
+            </span>
+
+            <span
+              class="theme-badge inactive-badge"
+              [style.display]="isDarkMode ? 'inline-flex' : 'none'">
+              Select
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- Dark Theme -->
+        <div
+          class="theme-card"
+          [class.theme-card-active]="isDarkMode"
+          (click)="isDarkMode ? null : toggleTheme()">
+
+          <div class="theme-preview dark-preview">
+
+            <div class="preview-sidebar"></div>
+
+            <div class="preview-body">
+              <div class="preview-header-bar"></div>
+
+              <div class="preview-content-lines">
+                <div class="preview-line"></div>
+                <div class="preview-line short"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="theme-card-footer">
+
+            <div class="theme-card-info">
+              <i class="fa-solid fa-moon"></i>
+              <span>Dark Mode</span>
+            </div>
+
+            <span
+              class="theme-badge active-badge"
+              [style.display]="isDarkMode ? 'inline-flex' : 'none'">
+              Active
+            </span>
+
+            <span
+              class="theme-badge inactive-badge"
+              [style.display]="isDarkMode ? 'none' : 'inline-flex'">
+              Select
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- About Section -->
+    <div class="settings-section about-section">
+
+      <div class="about-content">
+
+        <div class="about-logo">
+          <i class="fa-solid fa-building"></i>
+        </div>
+
+        <div class="about-info">
+
+          <h3>HR Management System</h3>
+
+          <p>
+            Version 1.0.0
+          </p>
+
+          <p>
+            Built with Angular
+          </p>
+
+          <p class="about-copyright">
+            © 2026 Your Company. All rights reserved.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ═══════════════════════ Workplace Policies ═══════════════════════ -->
+  <div class="settings-section">
+
+    <div class="section-header">
+
+      <div class="section-icon policy-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+
+      <div>
+        <h2 class="section-title">Workplace Policies</h2>
+        <p class="section-subtitle">
+          Review the company's official policies and guidelines.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="policies-grid">
+
+      <!-- Attendance Policy -->
+      <div class="policy-card">
+
+        <div class="policy-card-header">
+
+          <div class="policy-icon-circle attendance-circle">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+
+          <h3>Attendance Policy</h3>
+
+        </div>
+
+        <ul class="policy-list">
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Standard working hours are
+            <strong>9:00 AM – 5:00 PM</strong>.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Employees arriving after
+            <strong>9:15 AM</strong>
+            will be marked as late.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Three late arrivals in a month will generate a written warning.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Remote check-in is available for approved employees only.
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Leave Policy -->
+      <div class="policy-card">
+
+        <div class="policy-card-header">
+
+          <div class="policy-icon-circle leave-circle">
+            <i class="fa-solid fa-umbrella-beach"></i>
+          </div>
+
+          <h3>Leave Policy</h3>
+
+        </div>
+
+        <ul class="policy-list">
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Each employee is entitled to
+            <strong>21 annual leave days</strong>.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Sick leave quota is
+            <strong>15 days per year</strong>
+            with a medical certificate.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Leave requests must be submitted at least
+            <strong>3 days</strong>
+            in advance.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Manager approval is required for all leave types.
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Security Policy -->
+      <div class="policy-card">
+
+        <div class="policy-card-header">
+
+          <div class="policy-icon-circle security-circle">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+
+          <h3>Security Policy</h3>
+
+        </div>
+
+        <ul class="policy-list">
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Passwords must be at least
+            <strong>8 characters</strong>
+            with mixed case and digits.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Sessions auto-expire after
+            <strong>30 minutes</strong>
+            of inactivity.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Two-factor authentication is recommended for all admin accounts.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Password changes are required every
+            <strong>90 days</strong>.
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- Privacy Policy -->
+      <div class="policy-card">
+
+        <div class="policy-card-header">
+
+          <div class="policy-icon-circle privacy-circle">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+
+          <h3>Data Privacy</h3>
+
+        </div>
+
+        <ul class="policy-list">
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Employee personal data is encrypted at rest and in transit.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Access to HR data is restricted to authorized personnel only.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Data retention period is
+            <strong>5 years</strong>
+            after employment ends.
+          </li>
+
+          <li>
+            <i class="fa-solid fa-check"></i>
+            Employees may request a copy of their data at any time.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

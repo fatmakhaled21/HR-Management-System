@@ -1,0 +1,89 @@
+<div class="employees-wrapper animate-fade-in">
+  <div class="page-header mb-4">
+    <div>
+      <h1>Employees</h1>
+      <p class="text-secondary m-0">Manage employee accounts, details, and positions.</p>
+    </div>
+    <div>
+      <app-add-employee [departments]="departments" [statusList]="statusList"
+        (formSubmitted)="handleFormSubmission($event)"></app-add-employee>
+    </div>
+  </div>
+
+  <div class="card p-4">
+    <div class="row align-items-center mb-3">
+      <div class="col-md-6 col-lg-5">
+        <app-search [(searchTerms)]="searchTerms"></app-search>
+      </div>
+      <div class="col-md-6 col-lg-7">
+        <app-fliters [(selectedDepartment)]="selectedDepartment" [(selectedStatus)]="selectedStatus" [showStatus]="true"
+          [showdepartment]="true" [showStatusattendance]="false" [showStatusatLeave]="false"
+          [showLeaveType]="false"></app-fliters>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Department</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let items of employees | search : searchTerms : 'name' | filter: selectedDepartment : 'departments.name' | filter: selectedStatus : 'status'">
+            <td><span class="text-muted font-monospace">#{{ items.id }}</span></td>
+            <td><strong>{{ items.name | uppercase }}</strong></td>
+            <td>{{ items.email }}</td>
+            <td>
+              <span class="dept-badge">{{ items.departments?.name || 'N/A' }}</span>
+            </td>
+                        <td>
+              <span [class]="'badge ' + (items.status === 'Active' ? 'badge-active' : items.status === 'Inactive' ? 'badge-inactive' : 'badge-on-leave')">{{ items.status }}</span>
+            </td>
+            <td class="text-end">
+              <i class="fa-solid fa-eye action-icon" title="View details" (click)="openview(items.id)"></i>
+              <i class="fa-solid fa-pen-to-square action-icon" title="Edit employee" (click)="openedit(items.id)"></i>
+              <i class="fa-solid fa-trash action-icon me-0" title="Delete employee" (click)="openDelete(items.id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <app-view-details [EmplyeesDetails]="EmplyeesDetails" [viewpopu]="viewpopu"
+    (closeview)="closeview()"></app-view-details>
+
+  <div class="edit-modal-wrapper" *ngIf="editpopu">
+    <app-edit-employee [departments]="departments" [editpopu]="editpopu" [selectedEmployeeId]="selectedEmployeeId"
+      (closeEdit)="closeEdit()" (employeeUpdated)="getEmployees()">
+    </app-edit-employee>
+  </div>
+
+  <!-- Styled Delete Modal -->
+  <div class="custom-modal-overlay animate-fade-in" *ngIf="deletepopu">
+    <div class="custom-modal-panel shadow-lg animate-scale-up">
+      <div class="modal-alert-icon text-danger">
+        <i class="fa-solid fa-trash-can"></i>
+      </div>
+      <h3 class="modal-title mt-3 text-center">Delete Employee</h3>
+      <p class="modal-text text-center mt-2 mb-4">
+        Are you sure you want to permanently delete this employee? This action is irreversible and will remove all their records.
+      </p>
+      <div class="d-flex justify-content-center gap-3 w-100">
+        <button class="btn btn-secondary flex-grow-1" (click)="CencleDelete()">
+          Cancel
+        </button>
+        <button class="btn btn-danger flex-grow-1" (click)="confirmDelete()">
+          Yes, Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
